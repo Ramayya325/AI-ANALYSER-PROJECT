@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+
+  parser-service:
+    build: ./parser-service
+    ports:
+      - "8001:8001"
+    command: uvicorn main:app --host 0.0.0.0 --port 8001
+
+  ai-service:
+    build: ./ai-service
+    ports:
+      - "8000:8000"
+    command: uvicorn main:app --host 0.0.0.0 --port 8000
+
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "8002:8002"
+    depends_on:
+      - parser-service
+      - ai-service
+    command: uvicorn main:app --host 0.0.0.0 --port 8002
