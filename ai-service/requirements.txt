@@ -1,3 +1,5 @@
-fastapi
 uvicorn
 spacy
+fastapi
+prometheus-fastapi-instrumentator
+prometheus_client

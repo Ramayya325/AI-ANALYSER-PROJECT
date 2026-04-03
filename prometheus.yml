@@ -1,0 +1,15 @@
+global:
+  scrape_interval: 5s
+
+scrape_configs:
+  - job_name: 'ai-service'
+    static_configs:
+      - targets: ['ai-service:8000']
+
+  - job_name: 'parser-service'
+    static_configs:
+      - targets: ['parser-service:8001']
+
+  - job_name: 'api-gateway'
+    static_configs:
+      - targets: ['api-gateway:8002']

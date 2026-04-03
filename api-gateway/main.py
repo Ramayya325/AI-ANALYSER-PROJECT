@@ -1,7 +1,11 @@
 from fastapi import FastAPI
 import requests
+from prometheus_fastapi_instrumentator import Instrumentator
 
 app = FastAPI()
+
+# 🔥 Prometheus metrics
+Instrumentator().instrument(app).expose(app)
 
 PARSER_URL = "http://parser-service:8001"
 AI_URL = "http://ai-service:8000"
