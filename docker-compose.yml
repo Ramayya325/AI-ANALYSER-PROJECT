@@ -1,22 +1,16 @@
-version: "3.8"
-
 services:
-
   ai-service:
     build: ./ai-service
-    container_name: ai-service
     ports:
       - "8005:8000"
 
   parser-service:
     build: ./parser-service
-    container_name: parser-service
     ports:
       - "8006:8001"
 
   api-gateway:
     build: ./api-gateway
-    container_name: api-gateway
     ports:
       - "8007:8002"
     depends_on:
@@ -25,7 +19,6 @@ services:
 
   prometheus:
     image: prom/prometheus
-    container_name: prometheus
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
@@ -33,6 +26,5 @@ services:
 
   grafana:
     image: grafana/grafana
-    container_name: grafana
     ports:
       - "3000:3000"
