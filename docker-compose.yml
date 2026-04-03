@@ -2,17 +2,17 @@ services:
   ai-service:
     build: ./ai-service
     ports:
-      - "8005:8000"
+      - "8010:8000"
 
   parser-service:
     build: ./parser-service
     ports:
-      - "8006:8001"
+      - "8011:8001"
 
   api-gateway:
     build: ./api-gateway
     ports:
-      - "8007:8002"
+      - "8012:8002"
     depends_on:
       - ai-service
       - parser-service
@@ -22,9 +22,9 @@ services:
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
-      - "9090:9090"
+      - "9080:9090"
 
   grafana:
     image: grafana/grafana
     ports:
-      - "3000:3000"
+      - "3010:3000"
